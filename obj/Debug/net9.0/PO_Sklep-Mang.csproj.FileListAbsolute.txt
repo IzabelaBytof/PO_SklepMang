@@ -1,0 +1,14 @@
+C:\Users\isiab\Documents\sem 4\GIT projekty\PO_Sklep-Mang\bin\Debug\net9.0\PO_Sklep-Mang.exe
+C:\Users\isiab\Documents\sem 4\GIT projekty\PO_Sklep-Mang\bin\Debug\net9.0\PO_Sklep-Mang.deps.json
+C:\Users\isiab\Documents\sem 4\GIT projekty\PO_Sklep-Mang\bin\Debug\net9.0\PO_Sklep-Mang.runtimeconfig.json
+C:\Users\isiab\Documents\sem 4\GIT projekty\PO_Sklep-Mang\bin\Debug\net9.0\PO_Sklep-Mang.dll
+C:\Users\isiab\Documents\sem 4\GIT projekty\PO_Sklep-Mang\bin\Debug\net9.0\PO_Sklep-Mang.pdb
+C:\Users\isiab\Documents\sem 4\GIT projekty\PO_Sklep-Mang\obj\Debug\net9.0\PO_Sklep-Mang.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\isiab\Documents\sem 4\GIT projekty\PO_Sklep-Mang\obj\Debug\net9.0\PO_Sklep-Mang.AssemblyInfoInputs.cache
+C:\Users\isiab\Documents\sem 4\GIT projekty\PO_Sklep-Mang\obj\Debug\net9.0\PO_Sklep-Mang.AssemblyInfo.cs
+C:\Users\isiab\Documents\sem 4\GIT projekty\PO_Sklep-Mang\obj\Debug\net9.0\PO_Sklep-Mang.csproj.CoreCompileInputs.cache
+C:\Users\isiab\Documents\sem 4\GIT projekty\PO_Sklep-Mang\obj\Debug\net9.0\PO_Sklep-Mang.dll
+C:\Users\isiab\Documents\sem 4\GIT projekty\PO_Sklep-Mang\obj\Debug\net9.0\refint\PO_Sklep-Mang.dll
+C:\Users\isiab\Documents\sem 4\GIT projekty\PO_Sklep-Mang\obj\Debug\net9.0\PO_Sklep-Mang.pdb
+C:\Users\isiab\Documents\sem 4\GIT projekty\PO_Sklep-Mang\obj\Debug\net9.0\PO_Sklep-Mang.genruntimeconfig.cache
+C:\Users\isiab\Documents\sem 4\GIT projekty\PO_Sklep-Mang\obj\Debug\net9.0\ref\PO_Sklep-Mang.dll
