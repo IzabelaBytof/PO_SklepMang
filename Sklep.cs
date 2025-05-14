@@ -1,60 +1,19 @@
-using System.Security.Cryptography;
 using System.Text;
 
 public class Sklep : IKoszyk
 {
+    public List<Manga> Mangi { get; set; } = new List<Manga>();
     private Manga[] mangi;
-    public Manga[] Mangi
-    {
-        get { return mangi; }
-    }
-    public static int maksymalnyStanMagazynowy = 100;
+    public static int MaksymalnyStanMagazynowy { get; } = 10;
+
     public Sklep()
     {
-        mangi = new Manga[maksymalnyStanMagazynowy];
-        mangi[0] = new Manga("Pokemon Adventures", "Hidenori Kusaka", 39.99m);
-        mangi[1] = new Manga("Czarodziejki z Księżyca", "Naoko Takeuchi", 49.99m);
-        mangi[2] = new Manga("Muminki", "Tove Marika Jansson", 29.99m);
-        mangi[3] = new Manga("Jak zaliczyć Programowanie Obiektowe", "Ada Lovelace", 999.99m);
-        mangi[4] = new Manga("Toradora", "Yuyuko Takemiya", 44.99m);
-        mangi[5] = new Manga("Death Note", "Tsugumi Ohba", 24.99m);
+        mangi = new Manga[MaksymalnyStanMagazynowy];
     }
-    public void KupMangi(Klient klient)
-    {
-        System.Console.WriteLine("Zakupione mangi:");
-        if (klient.LiczbaMangWKoszyku == 0)
-        {
-            System.Console.Write("-");
-            throw new Manga.MangaException("Nie można kupić pustego koszyka");
-        }
-        else
-        {
 
-
-            decimal cena = 0;
-            for (int i = 0; i < klient.Koszyk.Length; i++)
-            {
-                if (klient.Koszyk[i] != null)
-                {
-                    System.Console.WriteLine(klient.Koszyk[i].ToString());
-                    for (int j = 0; j < mangi.Length; j++)
-                    {
-                        if (mangi[j] == klient.Koszyk[i])
-                        {
-                            UsunZKoszyka(mangi[j]);
-                            break;
-                        }
-                    }
-                    cena += klient.Koszyk[i].Cena;
-                    klient.UsunZKoszyka(klient.Koszyk[i]);
-                }
-            }
-            System.Console.WriteLine($"Łączna cena: {cena}");
-        }
-    }
     public void DodajDoKoszyka(Manga manga)
     {
-        for (int i = 0; i < mangi.Length; i++)
+        for (int i = 0; i < MaksymalnyStanMagazynowy; i++)
         {
             if (mangi[i] == null)
             {
@@ -62,30 +21,59 @@ public class Sklep : IKoszyk
                 return;
             }
         }
-        throw new Manga.MangaException("Magazyn pełny, nie można dodać więcej mang!");
+
+        throw new Manga.MangaException("Przekroczono wielkość magazynu sklepu!");
     }
+
     public void UsunZKoszyka(Manga manga)
     {
-        for (int i = 0; i < mangi.Length; i++)
+        for (int i = 0; i < MaksymalnyStanMagazynowy; i++)
         {
-            if (mangi[i] == manga)
+            if (mangi[i] != null && mangi[i].Equals(manga))
             {
                 mangi[i] = null;
                 return;
             }
         }
+
+        throw new Manga.MangaException("Nie znaleziono takiej mangi w sklepie!");
     }
-    public override string ToString()
+
+    public void KupMangi(Klient klient)
     {
-        StringBuilder sb = new StringBuilder();
-        sb.AppendLine("Mangi w sklepie:");
-        for (int i = 0; i < mangi.Length; i++)
+        if (klient.LiczbaMangWKoszyku == 0)
         {
-            if (mangi[i] != null)
+            throw new Manga.MangaException("Koszyk klienta jest pusty!");
+        }
+
+        Console.WriteLine("Zakup mang:");
+        decimal suma = 0;
+
+        for (int i = 0; i < klient.Koszyk.Length; i++)
+        {
+            if (klient.Koszyk[i] != null)
             {
-                sb.AppendLine(mangi[i].ToString());
+                Console.WriteLine(klient.Koszyk[i]);
+                suma += klient.Koszyk[i].Cena;
+                klient.UsunZKoszyka(klient.Koszyk[i]);
             }
         }
-        return sb.ToString();
+
+        Console.WriteLine($"Suma do zapłaty: {suma:C}");
+    }
+
+
+    public override string ToString()
+    {
+        var builder = new StringBuilder();
+        builder.AppendLine("Dostępne Mangi w sklepie:");
+        foreach (var manga in mangi)
+        {
+            if (manga != null)
+            {
+                builder.AppendLine(manga.ToString());
+            }
+        }
+        return builder.ToString();
     }
 }

@@ -1,70 +1,68 @@
 using System.Text;
-using static Manga;
 
 public class Klient : IKoszyk
 {
-    private Manga[] koszyk;
-    public Manga[] Koszyk
-    {
-        get { return koszyk; }
-    }
-    private int liczbaMangWKoszyku;
-    public int LiczbaMangWKoszyku
-    {
-        get { return liczbaMangWKoszyku; }
-    }
-    public static int maksymalnyStanKoszyka = 3;
+    public Manga[] Koszyk;
+    public int LiczbaMangWKoszyku;
+    public static int MaksymalnyStanKoszyka = 3;
     private Sklep sklep;
+
     public Klient(Sklep sklep)
     {
         this.sklep = sklep;
-        koszyk = new Manga[maksymalnyStanKoszyka];
-        liczbaMangWKoszyku = 0;
+        Koszyk = new Manga[MaksymalnyStanKoszyka];
+        LiczbaMangWKoszyku = 0;
     }
+
     public void DodajDoKoszyka(Manga manga)
     {
-        if (liczbaMangWKoszyku < maksymalnyStanKoszyka)
+        for (int i = 0; i < MaksymalnyStanKoszyka; i++)
         {
-            for (int i = 0; i < koszyk.Length; i++){
-                if (koszyk[i] == null)
+            if (Koszyk[i] == null)
+            {
+                Koszyk[i] = new Manga(manga);
+                LiczbaMangWKoszyku++;
+                return;
+            }
+        }
+
+        throw new Manga.MangaException("Koszyk jest już pełny.");
+    }
+
+    public void UsunZKoszyka(Manga manga)
+    {
+        for (int i = 0; i < MaksymalnyStanKoszyka; i++)
+        {
+            if (Koszyk[i] != null && Koszyk[i].Equals(manga))
+            {
+                Koszyk[i] = null;
+                LiczbaMangWKoszyku--; 
+                return;
+            }
+        }
+
+        throw new Manga.MangaException("Manga nie znajduje się w koszyku klienta.");
+    }
+
+
+    public override string ToString()
+    {
+        var builder = new StringBuilder();
+        builder.AppendLine("Mangi w koszyku klienta:");
+        if (LiczbaMangWKoszyku == 0)
+        {
+            builder.AppendLine(" - ");
+        }
+        else
+        {
+            foreach (var manga in Koszyk)
+            {
+                if (manga != null)
                 {
-                    koszyk[liczbaMangWKoszyku] = manga;
-                    liczbaMangWKoszyku++;
-                    break;
+                    builder.AppendLine(manga.ToString());
                 }
             }
         }
-        else
-        {
-            throw new MangaException("Koszyk jest pełny");
-        }
-    }
-    public void UsunZKoszyka(Manga manga)
-    {
-        for(int i = 0; i < koszyk.Length; i++)
-        {
-            if (koszyk[i] == manga)
-            {
-                koszyk[i] = null;
-                liczbaMangWKoszyku--;
-                return;
-            }
-        }throw new MangaException("Nie znaleziono mangi w koszyku");
-    }
-    public override string ToString()
-    {
-        StringBuilder sb = new StringBuilder();
-        sb.AppendLine("Mangi w koszyku:");
-        if(liczbaMangWKoszyku == 0)
-        {
-            sb.Append("-");
-        }
-        else
-        {
-            for (int i = 0; i < koszyk.Length; i++)
-            {
-                sb.AppendLine(koszyk[i].ToString());
-            }
-        }return sb.ToString();
+        return builder.ToString();
     }
 }

@@ -1,28 +1,51 @@
 public class Manga
 {
-    private string autor;
-    private decimal cena;
-    public decimal Cena{
-        get { return cena; }
+    public string Tytul { get; }
+    public string Autor { get; }
+    public decimal Cena { get; set; }
+
+    public Manga(Manga manga) : this(manga.Tytul, manga.Autor, manga.Cena)
+    {
     }
-    private string tytul;
+
     public Manga(string tytul, string autor, decimal cena)
     {
-        this.tytul = tytul;
-        this.autor = autor;
         if (cena < 0)
         {
-            throw new ArgumentOutOfRangeException("Cena nie może być ujemna");
+            throw new ArgumentException("Cena nie może być niższa niż 0 zł");
         }
-        this.cena = cena;
+
+        Tytul = tytul;
+        Autor = autor;
+        Cena = cena;
     }
+
     public override string ToString()
     {
-        return $"Tytuł: {tytul}, Autor: {autor}, Cena: {cena}";
+        return $"{Tytul} {Autor} {Cena:C}";
     }
-    public class MangaException:Exception{
-        public MangaException(string message) : base("\t" + message){
 
+    public override bool Equals(object obj)
+    {
+        if (obj is Manga other)
+        {
+            return Tytul == other.Tytul && Autor == other.Autor;
+        }
+        return false;
+    }
+
+    public override int GetHashCode()
+    {   
+        return HashCode.Combine(Tytul, Autor);
+    }
+
+    public class MangaException : Exception
+    {
+        public MangaException(string message) : base("\t" + message)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(message);
+            Console.ResetColor();
         }
     }
 }

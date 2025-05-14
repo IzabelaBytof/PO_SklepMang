@@ -12,3 +12,4 @@ C:\Users\isiab\Documents\sem 4\GIT projekty\PO_Sklep-Mang\obj\Debug\net9.0\refin
 C:\Users\isiab\Documents\sem 4\GIT projekty\PO_Sklep-Mang\obj\Debug\net9.0\PO_Sklep-Mang.pdb
 C:\Users\isiab\Documents\sem 4\GIT projekty\PO_Sklep-Mang\obj\Debug\net9.0\PO_Sklep-Mang.genruntimeconfig.cache
 C:\Users\isiab\Documents\sem 4\GIT projekty\PO_Sklep-Mang\obj\Debug\net9.0\ref\PO_Sklep-Mang.dll
+C:\Users\isiab\Documents\sem 4\GIT projekty\PO_Sklep-Mang\obj\Debug\net9.0\PO_Sklep-Mang.sourcelink.json

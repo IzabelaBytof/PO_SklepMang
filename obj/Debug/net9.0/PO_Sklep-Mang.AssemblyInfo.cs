@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PO_Sklep-Mang")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6bd12529326e1d46f5e302cf54d5bbed437d2fc0")]
 [assembly: System.Reflection.AssemblyProductAttribute("PO_Sklep-Mang")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PO_Sklep-Mang")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
